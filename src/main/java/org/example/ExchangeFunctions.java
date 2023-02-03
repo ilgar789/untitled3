@@ -16,21 +16,31 @@ public class ExchangeFunctions {
 
     }
     public  void AznToDollar(double input){
-        DecimalFormat dF = new DecimalFormat( "#.##" );
-        double dollar =input*0.59;
-        double value = dollar;
-        double f= Double.parseDouble(dF.format(value));
-        JOptionPane.showMessageDialog(null,"Amount of dollar "+ f+"$");
+
+        double dollar =ExchangeFunctions.doubleFormat(input,0.59);
+        JOptionPane.showMessageDialog(null,"Amount of dollar "+ dollar+"$");
+
     }
     public  void AznToRub(double input){
-        double rub =input*41.21;
+
+        double rub =ExchangeFunctions.doubleFormat(input,41.21);
         JOptionPane.showMessageDialog(null,"Amount of ruble "+ rub+"₽");
+
     }
 
     public  void AznToLira(double input){
-        double lir =input*11.07;
+
+        double lir =ExchangeFunctions.doubleFormat(input,11.07);
         JOptionPane.showMessageDialog(null,"Amount of lira "+ lir+"₺");
+
     }
 
+    public static double doubleFormat(double a ,double b){
+
+        String result = String.format("%8.2f", a*b).replace(',', '.');
+        double formatDouble=Double.parseDouble(result);
+        return formatDouble;
+
+    }
 
 }
